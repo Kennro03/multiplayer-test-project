@@ -7,22 +7,20 @@ const gravity : float = 9.81
 var username : String
 
 func _ready() -> void:
-	velocity = Vector2.ZERO
 	print("Player " + str(self) + " Ready.")
-	
 
 
 func _physics_process(delta: float) -> void:
-	velocity.y += delta * gravity * 20
-	velocity.x = 0.0
+	#velocity.y += delta * gravity * 20
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("right"):
 		velocity.x = speed
 	if Input.is_action_pressed("left"):
 		velocity.x = -speed
 	if Input.is_action_pressed("down"):
-		pass
-	if is_on_floor() and Input.is_action_pressed("up"):
-		velocity.y -= jump_power
+		velocity.y = speed
+	if Input.is_action_pressed("up"):
+		velocity.y = -speed
 	
 	
 	
